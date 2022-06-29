@@ -1,0 +1,42 @@
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+select {
+  display: block;
+  margin-top: 5px;
+  width: calc(100% - 5px);
+  padding: 5px;
+}
+
+input {
+  display: block;
+  margin-top: 5px;
+  width: calc(100% - 20px);
+  padding: 5px;
+}
+
+button {
+  width: calc(100% - 5px);
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+}
+
+#error {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  line-height: 20px;
+}
+
+#href {
+  float: left;
+  width: calc(100% - 50px);
+  margin-right: 10px;
+}

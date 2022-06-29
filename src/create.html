@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="create.css">
+</head>
+<body>
+<div style="width: 400px">
+    <h1>Create new bulletproof link</h1>
+    <form id="createForm">
+
+        <label for="href">URL*</label>
+        <input type="text" id="href" placeholder="https://www.example.com">
+        <div id="auto"><img src="images/current.png" width="15px" style="margin-top: 11px"></div>
+        <label for="title">Title</label>
+        <input type="text" id="title">
+        <label for="target">Target</label>
+        <select id="target">
+            <option value="_blank">new tab (_blank)</option>
+            <option value="_self">same tab (_self)</option>
+            <option value="_parent">parent frame (_parent)</option>
+        </select>
+    </form>
+    <button id="createButton">
+        create new bulletproof link
+    </button>
+    <div id="error"></div>
+    <div id="success"></div>
+</div>
+
+<script src="create.js"></script>
+
+</body>
+</html>
