@@ -35,7 +35,7 @@ document.getElementById('createButton').addEventListener('click', () => {
                 document.getElementById('error').innerHTML = response.message
             } else {
                 document.getElementById('error').innerHTML = ''
-                document.getElementById('success').innerHTML = 'Copy this link into every website you like. All users with the bulletproof link extension can see them afterwards: <br><div id="linkIdentifier">' + response.identifier + '</div><div id="copy"><img alt="copy to clipboard"src="images/clipboard.png""></div>'
+                document.getElementById('success').innerHTML = 'Copy this link into every website you like: <br><div id="linkIdentifier">' + response.identifier + '</div><div id="copy"><img alt="copy to clipboard"src="images/clipboard.png""></div>'
 
                 document.getElementById('copy').addEventListener('click', () => {
                     copyTextToClipboard(response.identifier)

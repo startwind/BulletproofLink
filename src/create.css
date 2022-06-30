@@ -2,20 +2,26 @@
 label {
     display: block;
     margin-top: 10px;
+    font-size: 12px;
 }
 
 select {
     display: block;
     margin-top: 5px;
     width: calc(100% - 5px);
-    padding: 5px;
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
 }
 
 input {
     display: block;
     margin-top: 5px;
-    width: calc(100% - 20px);
-    padding: 5px;
+    width: calc(100% - 30px);
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 button {
@@ -58,4 +64,18 @@ button {
     margin-left: 10px;
     margin-top: 8px;
     width: 15px;
+}
+
+#headline {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#headline img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+#intro {
+    line-height: 20px; color: #7f8c8d; margin-bottom: 20px; width: calc(100% - 20px);
 }
