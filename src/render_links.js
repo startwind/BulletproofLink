@@ -4,10 +4,7 @@ const continuousUpdatedSecretPages = [
     '6186372740273807'
 ]
 
-const simpleLinkSecretPages = [
-    '6186372740273807',
-    '8788452265085171' // YouTube.com
-]
+let translated = []
 
 /**
  * Create a hashtag from the domain name
@@ -29,20 +26,29 @@ String.prototype.bulletproofHashCode = function () {
 
 const url = new URL(window.location.href);
 const domainHash = url.hostname.bulletproofHashCode()
-const simpleLink = simpleLinkSecretPages.includes(domainHash);
 
 if (devMode) {
     console.debug('DEV domain hash: ', domainHash)
-    console.debug('DEV simple link: ', simpleLink)
 }
+
+const linkDiv = document.createElement("div")
+linkDiv.id = 'bulletproofLinks'
+linkDiv.style.cssText = 'position: fixed; bottom: 10px; right: 20px; z-index: 1000; display: none; width: 175px; font-family: roboto, arial'
+linkDiv.innerHTML = '<div style="font-size: 15px; font-weight: bold; padding: 10px; background-color: #27ae60; border-radius: 10px; color: white">Bulletproof Links</div>'
+
+const linkUl = document.createElement("ul")
+linkUl.style.cssText = 'margin-top: 0; list-style: none; margin-left: 0; padding-left: 0'
+linkDiv.appendChild(linkUl)
+
+document.body.appendChild(linkDiv);
 
 if (continuousUpdatedSecretPages.includes(domainHash)) {
     window.setInterval(() => {
-        replaceBulletproofLinks(simpleLink)
+        replaceBulletproofLinks()
     }, 5000);
 } else {
     window.setTimeout(() => {
-        replaceBulletproofLinks(simpleLink)
+        replaceBulletproofLinks()
     }, 5000);
 }
 
@@ -53,20 +59,22 @@ function replaceBulletproofLinks(simpleLink) {
 
     results.forEach((item) => {
         const bplIdentifier = item[0].substring(4)
-        fetch('https://www.startwind.io/bulletproof/?id=' + bplIdentifier)
-            .then(response => response.json())
-            .then(response => {
-                if (response.url) {
-                    let linkValue = ''
-                    if (simpleLink) {
-                        linkValue = response.url
-                    } else {
-                        linkValue = `<a href='${response.url}' target='${response.target}'>${response.title}</a>`
-                    }
 
-                    document.body.innerHTML = document.body.innerHTML.replace(new RegExp("bpl:" + bplIdentifier, "g"), linkValue)
-                    console.info('Replaced bulletproof link (id: ' + bplIdentifier + ') with ' + response.url)
-                }
-            })
+        if (!translated.includes(bplIdentifier)) {
+            translated.push(bplIdentifier)
+            fetch('https://www.startwind.io/bulletproof/?id=' + bplIdentifier)
+                .then(response => response.json())
+                .then(response => {
+                    if (response.url) {
+                        linkDiv.style.display = 'block'
+                        const linkValue = `<a href='${response.url}' target='${response.target}'>${response.title}</a>`
+                        const liElement =  document.createElement("li")
+                        liElement.style.cssText = 'background-color: #ecf0f1; border-radius: 10px; color: #2c3e50; padding: 10px; margin-top: 5px'
+                        liElement.innerHTML = linkValue
+                        linkUl.appendChild(liElement)
+                        console.info('Replaced bulletproof link (id: ' + bplIdentifier + ') with ' + response.url)
+                    }
+                })
+        }
     })
 }
