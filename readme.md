@@ -4,4 +4,4 @@ Bulletproof links are a new way to use links in a website. They will be replaced
 
 With bulletproof links it is possible to add links to all kind of websites like Instagram, Pinterest or chats. 
 
-![Chrome Plugin](docs/images/chrome.png)
+![Chrome Plugin](docs/images/chrome_extension.png)
