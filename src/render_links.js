@@ -34,13 +34,17 @@ if (devMode) {
 const linkDiv = document.createElement("div")
 linkDiv.id = 'bulletproofLinks'
 linkDiv.style.cssText = 'position: fixed; bottom: 10px; right: 20px; z-index: 1000; display: none; width: 175px; font-family: roboto, arial'
-linkDiv.innerHTML = '<div style="font-size: 15px; font-weight: bold; padding: 10px; background-color: #27ae60; border-radius: 10px; color: white">Bulletproof Links</div>'
+linkDiv.innerHTML = '<div style="font-size: 15px; font-weight: bold; padding: 10px; background-color: #27ae60; border-radius: 10px; color: white;">Bulletproof Links <span id="bpl_close" style="font-weight: normal; float: right">X</span></div>'
 
 const linkUl = document.createElement("ul")
 linkUl.style.cssText = 'margin-top: 0; list-style: none; margin-left: 0; padding-left: 0'
 linkDiv.appendChild(linkUl)
 
 document.body.appendChild(linkDiv);
+
+document.getElementById('bpl_close').addEventListener('click', () => {
+    linkDiv.style.display = 'none'
+})
 
 if (continuousUpdatedSecretPages.includes(domainHash)) {
     window.setInterval(() => {
@@ -67,9 +71,9 @@ function replaceBulletproofLinks(simpleLink) {
                 .then(response => {
                     if (response.url) {
                         linkDiv.style.display = 'block'
-                        const linkValue = `<a href='${response.url}' target='${response.target}'>${response.title}</a>`
-                        const liElement =  document.createElement("li")
-                        liElement.style.cssText = 'background-color: #ecf0f1; border-radius: 10px; color: #2c3e50; padding: 10px; margin-top: 5px'
+                        const linkValue = `<a href='${response.url}' target='${response.target}' style="text-decoration: none; color: #2c3e50;"><div style="width: 100%">${response.title}</div></a>`
+                        const liElement = document.createElement("li")
+                        liElement.style.cssText = 'background-color: #ecf0f1; border-radius: 10px; color: #2c3e50; padding: 10px; margin-top: 5px; font-size: 13px'
                         liElement.innerHTML = linkValue
                         linkUl.appendChild(liElement)
                         console.info('Replaced bulletproof link (id: ' + bplIdentifier + ') with ' + response.url)
