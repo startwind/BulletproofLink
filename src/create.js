@@ -1,3 +1,13 @@
+function copyTextToClipboard(text) {
+    const copyFrom = document.createElement("textarea");
+    copyFrom.textContent = text;
+    document.body.appendChild(copyFrom);
+    copyFrom.select();
+    document.execCommand('copy');
+    copyFrom.blur();
+    document.body.removeChild(copyFrom);
+}
+
 document.getElementById('createButton').addEventListener('click', () => {
     const href = document.getElementById('href').value
 
@@ -25,7 +35,11 @@ document.getElementById('createButton').addEventListener('click', () => {
                 document.getElementById('error').innerHTML = response.message
             } else {
                 document.getElementById('error').innerHTML = ''
-                document.getElementById('success').innerHTML = 'Successfully created a new link: <br><span id="linkIdentifier">' + response.identifier + '</span>'
+                document.getElementById('success').innerHTML = 'Copy this link into every website you like. All users with the bulletproof link extension can see them afterwards: <br><div id="linkIdentifier">' + response.identifier + '</div><div id="copy"><img alt="copy to clipboard"src="images/clipboard.png""></div>'
+
+                document.getElementById('copy').addEventListener('click', () => {
+                    copyTextToClipboard(response.identifier)
+                })
             }
         })
 })
