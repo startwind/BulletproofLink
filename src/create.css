@@ -69,6 +69,7 @@ button {
 #headline {
     font-size: 24px;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 #headline img {
@@ -77,5 +78,8 @@ button {
 }
 
 #intro {
-    line-height: 20px; color: #7f8c8d; margin-bottom: 20px; width: calc(100% - 20px);
+    line-height: 20px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    width: calc(100% - 20px);
 }
