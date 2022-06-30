@@ -5,3 +5,7 @@ Bulletproof links are a new way to use links in a website. They will be replaced
 With bulletproof links it is possible to add links to all kind of websites like Instagram, Pinterest or chats. 
 
 ![Chrome Plugin](docs/images/chrome_extension.png)
+
+The Chrome extension recognizes bulletproof links and will show them in an additional box as clickable links with an optional title.
+
+![Chrome Plugin](docs/images/example.png)
