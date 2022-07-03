@@ -66,7 +66,7 @@ function replaceBulletproofLinks(simpleLink) {
 
         if (!translated.includes(bplIdentifier)) {
             translated.push(bplIdentifier)
-            fetch('https://www.startwind.io/bulletproof/?id=' + bplIdentifier)
+            fetch('https://bulletproof.startwind.io/?id=' + bplIdentifier)
                 .then(response => response.json())
                 .then(response => {
                     if (response.url) {

@@ -20,10 +20,11 @@ document.getElementById('createButton').addEventListener('click', () => {
     const link = {
         url: href,
         title: document.getElementById('title').value,
-        target: document.getElementById('target').value
+        target: document.getElementById('target').value,
+        ttl:  document.getElementById('ttl').value,
     }
 
-    fetch('https://www.startwind.io/bulletproof/', {
+    fetch('https://bulletproof.startwind.io/', {
         method: 'POST', headers: {
             'Content-Type': 'application/json',
         }, body: JSON.stringify(link),
