@@ -83,3 +83,12 @@ button {
     margin-bottom: 20px;
     width: calc(100% - 20px);
 }
+
+#auto img {
+    width: 15px;
+    margin-top: 15px
+}
+
+.asterisk {
+    color: #e74c3c
+}
