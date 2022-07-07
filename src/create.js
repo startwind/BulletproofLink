@@ -20,7 +20,7 @@ document.getElementById('createButton').addEventListener('click', () => {
     const link = {
         url: href,
         title: document.getElementById('title').value,
-        target: document.getElementById('target').value,
+        target: '_blank',
         ttl:  document.getElementById('ttl').value,
     }
 
