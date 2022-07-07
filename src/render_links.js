@@ -59,10 +59,13 @@ if (continuousUpdatedSecretPages.includes(domainHash)) {
 function replaceBulletproofLinks(simpleLink) {
     console.info('Checking website for bulletproof links.')
 
-    const results = [...document.body.innerHTML.matchAll(/bpl:[a-f0-9]{32}/g)]
+    // const regex = /bpl:[a-f0-9]{32}/g
+    const regex =  /([a-z]{5}) [a-z]{5} [a-z]{5} [a-z]{5} [a-z]{5}\./gm
+
+    const results = [...document.body.innerHTML.matchAll(regex)]
 
     results.forEach((item) => {
-        const bplIdentifier = item[0].substring(4)
+        const bplIdentifier = item[0]
 
         if (!translated.includes(bplIdentifier)) {
             translated.push(bplIdentifier)
@@ -76,7 +79,7 @@ function replaceBulletproofLinks(simpleLink) {
                         liElement.style.cssText = 'background-color: #ecf0f1; border-radius: 10px; color: #2c3e50; padding: 10px; margin-top: 5px; font-size: 13px'
                         liElement.innerHTML = linkValue
                         linkUl.appendChild(liElement)
-                        console.info('Replaced bulletproof link (id: ' + bplIdentifier + ') with ' + response.url)
+                        console.info('Found bulletproof link (id: "' + bplIdentifier + '") with target ' + response.url)
                     }
                 })
         }
